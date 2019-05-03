@@ -8,6 +8,13 @@
 
 import UIKit
 
+extension CGPoint {
+    static func + (p1: CGPoint, p2: CGPoint) -> CGPoint {
+        let p = CGPoint(x: p1.x + p2.x, y: p1.y + p2.y)
+        return p
+    }
+}
+
 class ViewController: UIViewController {
 
     let ECGShape = CAShapeLayer()
@@ -22,7 +29,7 @@ class ViewController: UIViewController {
         ECGDraw()
         
     }
-
+    
     func ECGDraw() {
         let x = CGFloat(0)
         let y = view.center.y
@@ -30,8 +37,9 @@ class ViewController: UIViewController {
         let endPoint = CGPoint(x: x + view.bounds.width, y: y)
         
         let path = UIBezierPath()
-        
         path.move(to: startingPoint)
+        
+        // Logic of Drawing
         path.addLine(to: endPoint)
         
         ECGShape.strokeColor = UIColor.red.cgColor
